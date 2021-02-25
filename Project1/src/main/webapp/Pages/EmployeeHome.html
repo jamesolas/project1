@@ -8,7 +8,7 @@
 Employee Home
 <div>
 <H1>Submit Reimbursement Request</H1>
-<form id="form" method="post" action="/Project1/api/submit">
+<form id="form1" method="post" action="/Project1/api/employeesubmit">
 		<input type="text" name="date" placeholder="date" required />
 		<input type="text" name="amount" placeholder="amount" required />
 		<input type="text" name="expense type" placeholder="expense type" required />
@@ -19,12 +19,18 @@ Employee Home
 
 <div>
 <H1>View Pending Requests</H1>
-<button type="submit" value="view pending requests" id="view pending requests">Submit</button>
+<form id="form2" method="post" action="/Project1/api/employeepending">
+<input type="text" name="employeeId" placeholder="Employee Id" required />
+<button>Submit</button>
+</form>
 </div>
 
 <div>
 <H1>View Resolved Requests</H1>
-<button type="submit" value="view resolved requests" id="view resolved requests">Submit</button>
+<form id="form3" method="post" action="/Project1/api/employeeresolved">
+<input type="text" name="employeeId" placeholder="Employee Id" required />
+<button>Submit</button>
+</form>
 </div>
 
 

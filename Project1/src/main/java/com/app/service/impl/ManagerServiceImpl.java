@@ -15,7 +15,7 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public List<Reimbursement> viewOnePendingRequest(int employeeId) throws BusinessException {
+	public List<Reimbursement> viewOneEmployeeRequests(int employeeId) throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -46,6 +46,12 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public List<Reimbursement> viewEmployees() throws BusinessException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Reimbursement> viewAllReceipts() throws BusinessException {
 		// TODO Auto-generated method stub
 		return null;
 	}

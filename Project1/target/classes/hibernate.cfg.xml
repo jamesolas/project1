@@ -20,6 +20,7 @@
 		<mapping class="com.app.model.Employee"/>
 		<mapping class="com.app.model.Manager"/>
 		<mapping class="com.app.model.Login"/>
+		<mapping class="com.app.model.Reimbursement"/>
 		
 	</session-factory>
 </hibernate-configuration>

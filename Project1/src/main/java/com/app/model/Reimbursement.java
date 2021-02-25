@@ -4,22 +4,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name = "reimbursement", schema="Project1")
 public class Reimbursement {
 	@Id
 	@Column (name="request_id")
 	private int requestId;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn (name="employee_id")
 	private Employee employeeId;
 	
-	@Column (name="manager_id")
-	private int managerId;
+	@OneToOne
+	@JoinColumn (name="manager_id")
+	private Manager managerId;
 	
 	@Column
 	private String status;
@@ -27,72 +28,71 @@ public class Reimbursement {
 	@Column
 	private double amount;
 	
-	@ManyToOne
-	@JoinColumn
-	private Employee managersId;
 	
 	public Reimbursement() {
 		super();
 	}
 
-	public Reimbursement(int requestId, Employee employeeId, int managerId, String status, double amount,
-			Employee managersId) {
+
+	public Reimbursement(int requestId, Employee employeeId, Manager managerId, String status, double amount) {
 		super();
 		this.requestId = requestId;
 		this.employeeId = employeeId;
 		this.managerId = managerId;
 		this.status = status;
 		this.amount = amount;
-		this.managersId = managersId;
 	}
+
 
 	public int getRequestId() {
 		return requestId;
 	}
 
+
 	public void setRequestId(int requestId) {
 		this.requestId = requestId;
 	}
+
 
 	public Employee getEmployeeId() {
 		return employeeId;
 	}
 
+
 	public void setEmployeeId(Employee employeeId) {
 		this.employeeId = employeeId;
 	}
 
-	public int getManagerId() {
+
+	public Manager getManagerId() {
 		return managerId;
 	}
 
-	public void setManagerId(int managerId) {
+
+	public void setManagerId(Manager managerId) {
 		this.managerId = managerId;
 	}
+
 
 	public String getStatus() {
 		return status;
 	}
 
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 
 	public double getAmount() {
 		return amount;
 	}
 
+
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
-	public Employee getManagersId() {
-		return managersId;
-	}
-
-	public void setManagersId(Employee managersId) {
-		this.managersId = managersId;
-	}
 
 	@Override
 	public int hashCode() {
@@ -102,12 +102,12 @@ public class Reimbursement {
 		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((employeeId == null) ? 0 : employeeId.hashCode());
-		result = prime * result + managerId;
-		result = prime * result + ((managersId == null) ? 0 : managersId.hashCode());
+		result = prime * result + ((managerId == null) ? 0 : managerId.hashCode());
 		result = prime * result + requestId;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -125,12 +125,10 @@ public class Reimbursement {
 				return false;
 		} else if (!employeeId.equals(other.employeeId))
 			return false;
-		if (managerId != other.managerId)
-			return false;
-		if (managersId == null) {
-			if (other.managersId != null)
+		if (managerId == null) {
+			if (other.managerId != null)
 				return false;
-		} else if (!managersId.equals(other.managersId))
+		} else if (!managerId.equals(other.managerId))
 			return false;
 		if (requestId != other.requestId)
 			return false;
@@ -142,12 +140,14 @@ public class Reimbursement {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Reimbursement [requestId=" + requestId + ", employeeId=" + employeeId + ", managerId=" + managerId
-				+ ", status=" + status + ", amount=" + amount + ", managersId=" + managersId + "]";
+				+ ", status=" + status + ", amount=" + amount + "]";
 	}
 
-		
 
+		
+	
 }

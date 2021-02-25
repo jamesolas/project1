@@ -28,16 +28,24 @@ public class LoginDAOImpl implements LoginDAO {
 		s = HibernateSessionFactory.getSession();
 		t = s.beginTransaction();
 
-		String type = (String) s.createQuery("SELECT Employee.type FROM Employee JOIN Login WHERE Login.email = :email").setParameter("email", email).getSingleResult();
-		System.out.println(type);
+//		Login login2 = s.createQuery("SELECT Employee.type FROM Employee JOIN Login ON Employee.employeeId = Login.employee.Id WHERE "
+//				+ "Login.email = :email", Login.class).setParameter("email", email).getSingleResult();
+//		System.out.println(login2);
 		
+//		Employee employee = s.createQuery("SELECT FROM Employee E WHERE "
+//				+ "E.Login.email = :email", Employee.class).setParameter("email", email).getSingleResult();
+//		System.out.println(employee);
+		
+//		Object sql = s.createNativeQuery("SELECT Employee.type FROM Employee JOIN Login ON Employee.employeeId = Login.employeeId "
+//				+ "WHERE Login.email = ?").setParameter(1, email).getSingleResult();
+//		log.info(sql);
 		
 //		Object employee = s.get(Employee.class, "SELECT type FROM Employee E WHERE E.employeeEmail = email");
 //		log.info(employee);
 		
 		
 		Login login = (Login) s.createQuery("FROM Login L WHERE L.email = :email").setParameter("email", email).uniqueResult();
-		//System.out.println(login);
+		System.out.println(login);
 
 		
 		if(login.getEmail().equals(email) && login.getPassword().equals(password)) {
@@ -52,7 +60,10 @@ public class LoginDAOImpl implements LoginDAO {
 		e.printStackTrace();
 		t.rollback();
 	}finally {
-		s.close();
+		if(s != null) {
+			s.close();	
+		}
+		
 	}
 		return false;
 	}

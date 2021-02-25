@@ -9,7 +9,7 @@ import com.app.service.EmployeeService;
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
-	public int submitRequest(String something) throws BusinessException {
+	public int submitRequest(Reimbursement reimbursement) throws BusinessException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
