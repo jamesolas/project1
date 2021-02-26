@@ -12,7 +12,7 @@ import com.app.model.Employee;
 import com.app.model.Login;
 import com.app.util.HibernateSessionFactory;
 
-import jdk.internal.org.jline.utils.Log;
+
 
 public class LoginDAOImpl implements LoginDAO {
 
@@ -27,25 +27,9 @@ public class LoginDAOImpl implements LoginDAO {
 		try {
 		s = HibernateSessionFactory.getSession();
 		t = s.beginTransaction();
-
-//		Login login2 = s.createQuery("SELECT Employee.type FROM Employee JOIN Login ON Employee.employeeId = Login.employee.Id WHERE "
-//				+ "Login.email = :email", Login.class).setParameter("email", email).getSingleResult();
-//		System.out.println(login2);
-		
-//		Employee employee = s.createQuery("SELECT FROM Employee E WHERE "
-//				+ "E.Login.email = :email", Employee.class).setParameter("email", email).getSingleResult();
-//		System.out.println(employee);
-		
-//		Object sql = s.createNativeQuery("SELECT Employee.type FROM Employee JOIN Login ON Employee.employeeId = Login.employeeId "
-//				+ "WHERE Login.email = ?").setParameter(1, email).getSingleResult();
-//		log.info(sql);
-		
-//		Object employee = s.get(Employee.class, "SELECT type FROM Employee E WHERE E.employeeEmail = email");
-//		log.info(employee);
-		
 		
 		Login login = (Login) s.createQuery("FROM Login L WHERE L.email = :email").setParameter("email", email).uniqueResult();
-		System.out.println(login);
+		log.info(login);
 
 		
 		if(login.getEmail().equals(email) && login.getPassword().equals(password)) {

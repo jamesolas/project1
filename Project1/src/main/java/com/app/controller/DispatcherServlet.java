@@ -20,7 +20,7 @@ public class DispatcherServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-	
+	System.out.println ("doGet");
 		ObjectMapper objectMapper = new ObjectMapper();
 		PrintWriter writer = response.getWriter();
 		final String JSON = objectMapper.writeValueAsString(RequestHelper.processGet(request, response));

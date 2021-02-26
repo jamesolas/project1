@@ -1,12 +1,12 @@
-package com.app.service.impl;
+package com.app.dao.impl;
 
 import java.util.List;
 
+import com.app.dao.ManagerDAO;
 import com.app.exception.BusinessException;
 import com.app.model.Reimbursement;
-import com.app.service.ManagerService;
 
-public class ManagerServiceImpl implements ManagerService {
+public class ManagerDAOImpl implements ManagerDAO {
 
 	@Override
 	public List<Reimbursement> viewPendingRequests(int managerId) throws BusinessException {

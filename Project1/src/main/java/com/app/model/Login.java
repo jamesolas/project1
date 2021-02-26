@@ -28,10 +28,11 @@ public class Login {
 		super();
 	}
 
-	public Login(String email, String password) {
+	public Login(String email, String password, Employee employeeId) {
 		super();
 		this.email = email;
 		this.password = password;
+		this.employeeId = employeeId;
 	}
 
 	public String getEmail() {
@@ -50,11 +51,20 @@ public class Login {
 		this.password = password;
 	}
 
+	public Employee getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(Employee employeeId) {
+		this.employeeId = employeeId;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((employeeId == null) ? 0 : employeeId.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
@@ -73,6 +83,11 @@ public class Login {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (employeeId == null) {
+			if (other.employeeId != null)
+				return false;
+		} else if (!employeeId.equals(other.employeeId))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -83,8 +98,9 @@ public class Login {
 
 	@Override
 	public String toString() {
-		return "Login [email=" + email + ", password=" + password + "]";
+		return "Login [email=" + email + ", password=" + password + ", employeeId=" + employeeId + "]";
 	}
-	
+
+		
 
 }

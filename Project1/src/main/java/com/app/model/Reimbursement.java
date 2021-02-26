@@ -1,26 +1,32 @@
 package com.app.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table (name = "reimbursement", schema="Project1")
 public class Reimbursement {
 	@Id
+	@GeneratedValue(generator = "id_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(allocationSize = 1, name = "id_seq", sequenceName = "project1.reimbursement_request_id_seq")
 	@Column (name="request_id")
 	private int requestId;
 	
-	@OneToOne
-	@JoinColumn (name="employee_id")
-	private Employee employeeId;
+	@Column (name="employee_id")
+	private int employeeId;
 	
-	@OneToOne
-	@JoinColumn (name="manager_id")
-	private Manager managerId;
+	
+	@Column (name="manager_id")
+	private int managerId;
 	
 	@Column
 	private String status;
@@ -28,19 +34,23 @@ public class Reimbursement {
 	@Column
 	private double amount;
 	
+	@Column
+	private Date date;
+	
 	
 	public Reimbursement() {
 		super();
 	}
 
 
-	public Reimbursement(int requestId, Employee employeeId, Manager managerId, String status, double amount) {
+	public Reimbursement(int requestId, int employeeId, int managerId, String status, double amount, Date date) {
 		super();
 		this.requestId = requestId;
 		this.employeeId = employeeId;
 		this.managerId = managerId;
 		this.status = status;
 		this.amount = amount;
+		this.date = date;
 	}
 
 
@@ -54,22 +64,22 @@ public class Reimbursement {
 	}
 
 
-	public Employee getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 
 
-	public void setEmployeeId(Employee employeeId) {
+	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
 
 
-	public Manager getManagerId() {
+	public int getManagerId() {
 		return managerId;
 	}
 
 
-	public void setManagerId(Manager managerId) {
+	public void setManagerId(int managerId) {
 		this.managerId = managerId;
 	}
 
@@ -94,6 +104,16 @@ public class Reimbursement {
 	}
 
 
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -101,8 +121,9 @@ public class Reimbursement {
 		long temp;
 		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((employeeId == null) ? 0 : employeeId.hashCode());
-		result = prime * result + ((managerId == null) ? 0 : managerId.hashCode());
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + employeeId;
+		result = prime * result + managerId;
 		result = prime * result + requestId;
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
@@ -120,15 +141,14 @@ public class Reimbursement {
 		Reimbursement other = (Reimbursement) obj;
 		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
 			return false;
-		if (employeeId == null) {
-			if (other.employeeId != null)
+		if (date == null) {
+			if (other.date != null)
 				return false;
-		} else if (!employeeId.equals(other.employeeId))
+		} else if (!date.equals(other.date))
 			return false;
-		if (managerId == null) {
-			if (other.managerId != null)
-				return false;
-		} else if (!managerId.equals(other.managerId))
+		if (employeeId != other.employeeId)
+			return false;
+		if (managerId != other.managerId)
 			return false;
 		if (requestId != other.requestId)
 			return false;
@@ -144,10 +164,10 @@ public class Reimbursement {
 	@Override
 	public String toString() {
 		return "Reimbursement [requestId=" + requestId + ", employeeId=" + employeeId + ", managerId=" + managerId
-				+ ", status=" + status + ", amount=" + amount + "]";
+				+ ", status=" + status + ", amount=" + amount + ", date=" + date + "]";
 	}
 
 
-		
+				
 	
 }
