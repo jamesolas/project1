@@ -8,9 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table (name = "reimbursement", schema="Project1")
@@ -36,7 +39,11 @@ public class Reimbursement {
 	
 	@Column
 	private Date date;
+	@Column 
+	private byte[] receipt;
 	
+	@Column (name="file_name")
+	private String filename;
 	
 	public Reimbursement() {
 		super();
@@ -52,8 +59,44 @@ public class Reimbursement {
 		this.amount = amount;
 		this.date = date;
 	}
-
-
+	public Reimbursement(int requestId, int employeeId, int managerId, String status, double amount, Date date, byte[]data) {
+		super();
+		this.requestId = requestId;
+		this.employeeId = employeeId;
+		this.managerId = managerId;
+		this.status = status;
+		this.amount = amount;
+		this.date = date;
+		this.receipt=data;
+	}
+	public Reimbursement(int requestId, int employeeId, int managerId, String status, double amount, Date date,  String fn) {
+		super();
+		this.requestId = requestId;
+		this.employeeId = employeeId;
+		this.managerId = managerId;
+		this.status = status;
+		this.amount = amount;
+		this.date = date;
+		this.receipt=null;
+		this.filename=fn;
+	}
+	public String getFilename ()
+	{
+		return filename;
+	}
+	public void setFilename (String fn)
+	{
+		this.filename=fn;
+	}
+	@Type(type = "org.hibernate.type.BinaryType")
+	public byte[]getReceipt()
+	{
+		return receipt;
+	}
+	public void setReceipt (byte[] receipt)
+	{
+		this.receipt=receipt;
+	}
 	public int getRequestId() {
 		return requestId;
 	}

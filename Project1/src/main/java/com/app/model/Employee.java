@@ -25,99 +25,101 @@ public class Employee {
 	
 	@OneToOne
 	@JoinColumn(name="manager_id")
-	private Manager managerId;
+	private Manager manager; // s/b just manager
 			
 	@Column
 	private String type;
 	
-	@Column (name = "boss_id")
-	private int bossId;
 
 	public Employee() {
 		super();
 	}
 
-	public Employee(int employeeId, String firstName, String lastName, String phone, Manager managerId, String type,
-			int bossId) {
+
+	public Employee(int employeeId, String firstName, String lastName, String phone, Manager manager, String type) {
 		super();
 		this.employeeId = employeeId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
-		this.managerId = managerId;
+		this.manager = manager;
 		this.type = type;
-		this.bossId = bossId;
 	}
+
 
 	public int getEmployeeId() {
 		return employeeId;
 	}
 
+
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
+
 
 	public String getFirstName() {
 		return firstName;
 	}
 
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 
 	public String getLastName() {
 		return lastName;
 	}
 
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 
 	public String getPhone() {
 		return phone;
 	}
 
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	public Manager getManagerId() {
-		return managerId;
+
+	public Manager getManager() {
+		return manager;
 	}
 
-	public void setManagerId(Manager managerId) {
-		this.managerId = managerId;
+
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
+
 
 	public String getType() {
 		return type;
 	}
 
+
 	public void setType(String type) {
 		this.type = type;
 	}
 
-	public int getBossId() {
-		return bossId;
-	}
-
-	public void setBossId(int bossId) {
-		this.bossId = bossId;
-	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + bossId;
 		result = prime * result + employeeId;
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((managerId == null) ? 0 : managerId.hashCode());
+		result = prime * result + ((manager == null) ? 0 : manager.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -128,8 +130,6 @@ public class Employee {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		if (bossId != other.bossId)
-			return false;
 		if (employeeId != other.employeeId)
 			return false;
 		if (firstName == null) {
@@ -142,10 +142,10 @@ public class Employee {
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (managerId == null) {
-			if (other.managerId != null)
+		if (manager == null) {
+			if (other.manager != null)
 				return false;
-		} else if (!managerId.equals(other.managerId))
+		} else if (!manager.equals(other.manager))
 			return false;
 		if (phone == null) {
 			if (other.phone != null)
@@ -160,12 +160,12 @@ public class Employee {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", phone="
-				+ phone + ", managerId=" + managerId + ", type=" + type + ", bossId=" + bossId + "]";
+				+ phone + ", manager=" + manager + ", type=" + type + "]";
 	}
 
-	
-				
+					
 }

@@ -7,86 +7,46 @@
 <body>
 Welcome Manager
 
+
+
 <div>
-<H1>Submit Reimbursement Request</H1>
-<form id="form1" method="post" action="/Project1/api/employeesubmit">
-		<input type="text" name="date" placeholder="date" required />
-		<input type="text" name="amount" placeholder="amount" required />
-		<input type="text" name="expense type" placeholder="expense type" required />
-		<input type="file" name="image" placeholder="receipt image" required />
-		<button>Submit</button>
-</form>
+<a href="/Project1/Pages/Reimbursements.html">Reimbursements</a>
 </div>
 
 <div>
-<H1>View an Employee's Requests</H1>
-<form id="form2" method="post" action="/Project1/api/viewoneemployeerequests">
-<input type="text" name="employeeId" placeholder="Employee Id" required />
-<button>Submit</button>
-</form>
+<a href="/Project1/Pages/EmployeeInformation.html">Employee Information</a>
 </div>
 
-<div>
-<H1>View Pending Requests</H1>
-<form id="form3" method="post" action="/Project1/api/employeepending">
-<input type="text" name="employeeId" placeholder="Employee Id" required />
-<button>Submit</button>
-</form>
-</div>
+
+
+
+<p>Manager Functions</p>
 
 <div>
-<H1>View Resolved Requests</H1>
-<form id="form4" method="post" action="/Project1/api/employeeresolved">
-<input type="text" name="employeeId" placeholder="Employee Id" required />
-<button>Submit</button>
-</form>
-</div>
-
-<div>
-<H1>View Employees' Pending Requests</H1>
-<form id="form5" method="post" action="/Project1/api/employeepending">
-<input type="text" name="managerId" placeholder="Manager Id" required />
-<button>Submit</button>
-</form>
-</div>
-
-<div>
-<H1>Approve an Employee's Pending Request</H1>
-<form id="form6" method="post" action="/Project1/api/managerapprove">
-<input type="text" name="requestId" placeholder="Request Id" required />
-<button>Submit</button>
-</form>
-</div>
-
-<div>
-<H1>Deny an Employee's Pending Request</H1>
-<form id="form7" method="post" action="/Project1/api/managerdeny">
-<input type="text" name="requestId" placeholder="Request Id" required />
-<button>Submit</button>
-</form>
+<a href="/Project1/Pages/ManageReimbursements.html">Manage Reimbursements</a>
 </div>
 
 <div>
 <H1>View all Receipts</H1>
-<form id="form8" method="post" action="/Project1/api/viewimages">
-<button>Submit</button>
-</form>
-</div>
-
-<div>
-<H1>View all Resolved Requests</H1>
-<form id="form9" method="post" action="/Project1/api/managerviewresolved">
-<button>Submit</button>
+<form id="form8" method="get" action="/Project1/api/viewimages">
+<input type='button' onClick='viewReceipts()' value='View'/>
 </form>
 </div>
 
 <div>
 <H1>View all Employees</H1>
-<form id="form10" method="post" action="/Project1/api/viewemployees">
-<button>Submit</button>
+<form id="form10" method="get" action="/Project1/api/viewemployees">
+<input type='button' onClick='viewAllEmployees()' value='View'/>
 </form>
 </div>
 
+<div>
+<H1>Logout</H1>
+<form id="form4" method="post" action="/Project1/api/logout">
+<button>Logout</button>
+</form>
+</div>
 
+<script src="../Scripts/ManagerHome.js"?v=3></script>
 </body>
 </html>

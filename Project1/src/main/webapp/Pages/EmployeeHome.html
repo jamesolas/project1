@@ -7,33 +7,11 @@
 <body>
 Employee Home
 <div>
-<H1>Submit Reimbursement Request</H1>
-<form id="form1" method="post" action="/Project1/api/employeesubmit" enctype="multipart/form-data">
-		<input type="text" name="employeeId" placeholder="Employee ID" required />
-		<input type="text" name="managerId" placeholder="Manager ID" required />
-		<input type="text" name="date" placeholder="date" required />
-		<input type="text" name="amount" placeholder="amount" required />
-		<input type="file" name="image" placeholder="receipt image" />
-		<button>Submit</button>
-</form>
+<a href="/Project1/Pages/Reimbursements.html">Reimbursements</a>
 </div>
-
 <div>
-<H1>View Pending Requests</H1>
-<form id="form2" method="get" action="/Project1/api/employeepending">
-<input type="text" name="employeeId" id="employeeId" placeholder="Employee Id" required />
-<input type='button' onClick='viewPending()' value='View'/>
-</form>
+<a href="/Project1/Pages/EmployeeInformation.html">View Information</a>
 </div>
-
-<div>
-<H1>View Resolved Requests</H1>
-<form id="form3" method="post" action="/Project1/api/employeeresolved">
-<input type="text" name="employeeId" id="employeeId3" placeholder="Employee Id" required />
-
-</form>
-</div>
-
 <div>
 <H1>Logout</H1>
 <form id="form4" method="post" action="/Project1/api/logout">
@@ -41,11 +19,11 @@ Employee Home
 </form>
 </div>
 
-<div id="divContent" class="container reimbursements">
+<div id="divContent" class="container reimbursements"></div>
 
-	
+<div id="divResolved" class="container resolved"></div>	
 
-</div>
+
 <script src="../Scripts/EmployeeHome.js"></script>
 </body>
 </html>

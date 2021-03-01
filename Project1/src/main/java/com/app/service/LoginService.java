@@ -5,6 +5,6 @@ import com.app.model.Login;
 
 public interface LoginService {
 	
-	public Boolean login (String email, String password) throws BusinessException;
+	public String login (String email, String password) throws BusinessException;
 
 }

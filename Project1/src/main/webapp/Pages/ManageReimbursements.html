@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage Reimbursements</title>
+</head>
+<body>
+
+<a href="http://localhost:8080/Project1/Pages/ManagerHome.html">Manager Home</a>
+<br>
+<div>
+<H1>View an Employee's Requests</H1>
+<form id="form2" method="get" action="/Project1/api/viewoneemployeerequests">
+<input type="text" id="employeeId" name="employeeId" placeholder="Employee Id" required />
+<input type='button' onClick='viewRequests()' value='ViewRequests'/>
+</form>
+</div>
+
+<div>
+<H1>View Employees' Pending Requests</H1>
+<form id="form5" method="get" action="/Project1/api/employeepending">
+<input type="text" id="managerId" name="managerId" placeholder="Manager Id" required />
+<input type='button' onClick='viewPending()' value='ViewPending'/>
+</form>
+</div>
+
+<div>
+<H1>Approve an Employee's Pending Request</H1>
+<form id="form6" method="post" action="/Project1/api/managerapprove">
+<input type="text" name="requestId" placeholder="Request Id" required />
+<button>Submit</button>
+</form>
+</div>
+
+<div>
+<H1>Deny an Employee's Pending Request</H1>
+<form id="form7" method="post" action="/Project1/api/managerdeny">
+<input type="text" name="requestId" placeholder="Request Id" required />
+<button>Submit</button>
+</form>
+</div>
+
+<div>
+<H1>View all Resolved Requests</H1>
+<form id="form9" method="post" action="/Project1/api/managerviewresolved">
+<input type='button' onClick='viewAllResolved()' value='View'/>
+</form>
+</div>
+<br>
+
+
+<div id="divContent"></div>
+<div id="divContent2"></div>
+<div id="divContent3"></div>
+
+<script src="../Scripts/ManageReimbursements.js?v=11"></script>
+</body>
+</html>

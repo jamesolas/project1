@@ -20,19 +20,23 @@ public class Login {
 	@Column
 	private String password;
 	
+	@Column (name = "employee_id")
+	private int employeeId;
+	
 	@OneToOne (fetch = FetchType.EAGER)
-	@JoinColumn (name="employee_id")
-	private Employee employeeId;
+	@JoinColumn (name="employee")
+	private Employee employee;
 
 	public Login() {
 		super();
 	}
 
-	public Login(String email, String password, Employee employeeId) {
+	public Login(String email, String password, int employeeId, Employee employee) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.employeeId = employeeId;
+		this.employee = employee;
 	}
 
 	public String getEmail() {
@@ -51,12 +55,20 @@ public class Login {
 		this.password = password;
 	}
 
-	public Employee getEmployeeId() {
+	public int getEmployeeId() {
 		return employeeId;
 	}
 
-	public void setEmployeeId(Employee employeeId) {
+	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	@Override
@@ -64,7 +76,8 @@ public class Login {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((employeeId == null) ? 0 : employeeId.hashCode());
+		result = prime * result + ((employee == null) ? 0 : employee.hashCode());
+		result = prime * result + employeeId;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
@@ -83,10 +96,12 @@ public class Login {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (employeeId == null) {
-			if (other.employeeId != null)
+		if (employee == null) {
+			if (other.employee != null)
 				return false;
-		} else if (!employeeId.equals(other.employeeId))
+		} else if (!employee.equals(other.employee))
+			return false;
+		if (employeeId != other.employeeId)
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -98,9 +113,10 @@ public class Login {
 
 	@Override
 	public String toString() {
-		return "Login [email=" + email + ", password=" + password + ", employeeId=" + employeeId + "]";
+		return "Login [email=" + email + ", password=" + password + ", employeeId=" + employeeId + ", employee="
+				+ employee + "]";
 	}
 
-		
+			
 
 }

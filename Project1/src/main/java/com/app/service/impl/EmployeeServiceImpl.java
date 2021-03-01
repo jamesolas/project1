@@ -27,7 +27,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeDAOImpl.submitRequest(reimbursement);
 		return 0;
 	}
-
+	@Override
+	public int submitRequest(int employeeId, int managerId, double amount, Date date, byte[]receipt) throws BusinessException {
+		String status = "pending";
+		//log.info("submitRequest service");
+		Reimbursement reimbursement = new Reimbursement(1, employeeId, managerId, status, amount, date, receipt);
+		employeeDAOImpl.submitRequest(reimbursement);
+		return 0;
+	}
+	@Override
+	public int submitRequest(int employeeId, int managerId, double amount, Date date,  String fn) throws BusinessException {
+		String status = "pending";
+		//log.info("submitRequest service");
+		Reimbursement reimbursement = new Reimbursement(1, employeeId, managerId, status, amount, date,  fn);
+		employeeDAOImpl.submitRequest(reimbursement);
+		return 0;
+	}
 	@Override
 	public List<Reimbursement> viewPendingRequests(int employeeId) throws BusinessException {
 		log.info("viewPendingRequests service");
@@ -36,8 +51,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public List<Reimbursement> viewResolvedRequests(int employeeId) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("viewResolvedRequests service");
+		return this.employeeDAOImpl.viewResolvedRequests(employeeId);
+	}
+
+	@Override
+	public Employee viewInfo(int employeeId) throws BusinessException {
+		log.info("viewInfo service");
+		return this.employeeDAOImpl.viewInfo(employeeId);
+	}
+
+	@Override
+	public int changePhone(int employeeId, String phone) throws BusinessException {
+		log.info("changePhone service");
+		return this.employeeDAOImpl.changePhone(employeeId, phone);
 	}
 
 }
