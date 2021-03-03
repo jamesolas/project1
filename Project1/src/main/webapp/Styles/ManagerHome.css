@@ -1,1 +1,14 @@
 @charset "ISO-8859-1";
+.container{
+	display:grid;
+	grid-template-columns: 20em 20em 20em 20em;
+}
+
+#cssGird{
+	text-align: center;
+}
+
+.viewEmployees{
+	border-style: groove;
+	border-radius: 0.5em;
+}

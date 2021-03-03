@@ -6,7 +6,11 @@
 </head>
 <body>
 <div>
-
+<button onclick="goBack()">Back</button>
+<script>
+function goBack() {
+  window.history.back();
+</script>
 </div>
 <div>
 <H1>Submit Reimbursement Request</H1>
@@ -35,6 +39,21 @@
 <input type='button' onClick='viewResolved()' value='ViewResolved'/>
 </form>
 </div>
+
+<div>
+<h1>Submit request to cloud</h1>
+<form>
+<input type="text" name="employeeId" placeholder="Employee ID" required />
+		<input type="text" name="managerId" placeholder="Manager ID" required />
+		<input type="text" name="date" placeholder="date" required />
+		<input type="text" name="amount" placeholder="amount" required />
+		<input type="file" name="image" placeholder="receipt image" />
+		<button type="submit id="submit" method="post" onclick="sinow.location.href="http://localhost:8080/Project1/pages/employeehome.html" >Submit</button>
+</form>
+</div>
+
+</div>
+
 
 <div id="divContent">
 

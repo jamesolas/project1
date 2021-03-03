@@ -8,9 +8,7 @@ function viewInfo ()
 	xhr.onreadystatechange = function (){
 		if (this.readyState==4 && this.status==200){
 			const info =JSON.parse(this.responseText);
-			
-			console.log(viewInfo);
-			   
+						   
 			    let div = document.getElementById("divContent");
 
 				
@@ -26,7 +24,7 @@ function viewInfo ()
 				firstName.innerText = info.firstName
 				lastName.innerText = info.lastName
 				phone.innerText = info.phone
-				managerId.innerText = info.managerId
+				managerId.innerText = info.manager.managerId
 				type.innerText = info.type
 				
 				employeeInfo.append(employeeId)
