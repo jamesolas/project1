@@ -3,14 +3,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Manager Home</title>
-	<link rel="stylesheet" href=../Scripts/ManagerHome.css"></link>
+	<link rel="stylesheet" href="../Styles/ManagerHome.css"></link>
 </head>
 <body>
 Welcome Manager
 
 
 
-<div>
+<div class="container">
 <a href="/Project1/Pages/Reimbursements.html">Reimbursements</a>
 </div>
 
@@ -47,8 +47,26 @@ Welcome Manager
 <button>Logout</button>
 </form>
 </div>
+
 <div id="divContent1"></div>
-<div id="divContent2" class="viewEmployees"></div>
+
+<div id="divContent2" class="viewEmployees">
+	<table>
+		<thead>
+			<tr>
+				<td>Employee Id: </td>
+				<td>Employee First Name: </td>
+				<td>Employee Last Name: </td>
+				<td>Phone: </td>
+				<td>Manager Id: </td>
+				<td>Manager First Name:</td>
+				<td>Manager Last Name:</td>
+				<td>Type: </td>
+			</tr>
+		</thead>
+		<tbody id="employeesHere"></tbody>
+	</table>
+</div>
 
 <script src="../Scripts/ManagerHome.js"?v=3></script>
 </body>

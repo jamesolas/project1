@@ -11,8 +11,7 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public String login(String email, String password) throws BusinessException {
-		String type = "";
-		type = "employee";
+		
 		String returnedEmail = dao.login(email, password);
 		
 		return returnedEmail;

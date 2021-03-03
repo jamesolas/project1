@@ -51,45 +51,42 @@ function viewReceipts()
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function (){
 		if (this.readyState==4 && this.status==200){
-			const reimbursements =JSON.parse(this.responseText);
+			const employees =JSON.parse(this.responseText);
 			
-			console.log(reimbursements);
+			console.log(employees);
 			   
-			    let div = document.getElementById("divContent2");
+			    let tbody = document.getElementById("employeesHere");
 			    
-	for(let r of reimbursements){
-			    let newReimbursement=document.createElement('div')
-				let employeeId=document.createElement('p')
-				let firstName=document.createElement('p')
-				let lastName=document.createElement('p')
-				let phone=document.createElement('p')
-				//let manager=document.createElement('p')
-				let managerId=document.createElement('p')
-				let mFirstName=document.createElement('p')
-				let mLastName=document.createElement('p')
-				let type=document.createElement('p')
+	for(let r of employees){
+			    let tr=document.createElement('tr')
+				let employeeId=document.createElement('td')
+				let firstName=document.createElement('td')
+				let lastName=document.createElement('td')
+				let phone=document.createElement('td')
+				let managerId=document.createElement('td')
+				let mFirstName=document.createElement('td')
+				let mLastName=document.createElement('td')
+				let type=document.createElement('td')
 				
 				employeeId.innerText = r.employeeId
 				firstName.innerText = r.firstName
 				lastName.innerText = r.lastName
 				phone.innerText = r.phone
-				//manager.innerText = r.manager
 				managerId.innerText = r.manager.managerId
 				mFirstName.innerText = r.manager.firstName
-				mLastName.innerText = r.manager.lasttName
+				mLastName.innerText = r.manager.lastName
 				type.innerText = r.type
 				
-				newReimbursement.append(employeeId)
-				newReimbursement.append(firstName)
-				newReimbursement.append(lastName)
-				newReimbursement.append(phone)
-				//newReimbursement.append(manager)
-				newReimbursement.append(managerId)
-				newReimbursement.append(mFirstName)
-				newReimbursement.append(mLastName)
-				newReimbursement.append(type) 
+				tr.append(employeeId)
+				tr.append(firstName)
+				tr.append(lastName)
+				tr.append(phone)
+				tr.append(managerId)
+				tr.append(mFirstName)
+				tr.append(mLastName)
+				tr.append(type) 
 		
-				div.append(newReimbursement)
+				tbody.append(tr)
 	       }		
      	}
 	}

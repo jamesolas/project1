@@ -1,14 +1,24 @@
 @charset "ISO-8859-1";
-.container{
-	display:grid;
-	grid-template-columns: 20em 20em 20em 20em;
-}
 
-#cssGird{
+
+
+
+table{
+	border-style: solid;
+	margin-right: auto;
+	margin-left: auto;
+	width: 75%;
+	border-collapse: collapse;
 	text-align: center;
 }
 
-.viewEmployees{
-	border-style: groove;
-	border-radius: 0.5em;
+[id="divContent2"]{
+	display:block;
+	margin-top: 15px;
+	/*width: 20em;*/
+}
+
+td{
+	border-right: thin solid;
+	width: 10em;
 }

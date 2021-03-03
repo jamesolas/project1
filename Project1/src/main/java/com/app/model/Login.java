@@ -38,6 +38,14 @@ public class Login {
 		this.employeeId = employeeId;
 		this.employee = employee;
 	}
+	
+	
+
+	public Login(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
 
 	public String getEmail() {
 		return email;
