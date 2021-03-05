@@ -11,33 +11,36 @@ function viewRequests()
 			
 			console.log(reimbursements);
 			   
-			    let div = document.getElementById("divContent");
+			    let tbody = document.getElementById("requestData");
 			    
 	for(let r of reimbursements){
 		
-				let newReimbursement=document.createElement('div')
-				let requestId=document.createElement('p')
-				let employeeId=document.createElement('p')
-				let managerId=document.createElement('p')
-				let status=document.createElement('p')
-				let amount=document.createElement('p')
-				let date=document.createElement('p')
+				let tr=document.createElement('tr')
+				let requestId=document.createElement('td')
+				let employeeId=document.createElement('td')
+				let managerId=document.createElement('td')
+				let status=document.createElement('td')
+				let amount=document.createElement('td')
+				let date=document.createElement('td')
+
+				let parsedDate = new Date(r.date)
+				r.date.textContext = parsedDate.getFullYear() + "-" + parsedDate.getMonth() + "-" + parsedDate.getDay();
 				
 				requestId.innerText = r.requestId
 				employeeId.innerText = r.employeeId
 				managerId.innerText = r.managerId
 				status.innerText = r.status
 				amount.innerText = r.amount
-				date.innerText = r.date
+				date.innerText = parsedDate
 				
-				newReimbursement.append(requestId)
-				newReimbursement.append(employeeId)
-				newReimbursement.append(managerId)
-				newReimbursement.append(status)
-				newReimbursement.append(amount)
-				newReimbursement.append(date)
+				tr.append(requestId)
+				tr.append(employeeId)
+				tr.append(managerId)
+				tr.append(status)
+				tr.append(amount)
+				tr.append(date)
 		
-				div.append(newReimbursement)
+				tbody.append(tr)
 	       }		
      	}
 	}
@@ -45,67 +48,6 @@ function viewRequests()
 	
 	xhr.send();
 }
-
-
-
-
-
-
-
-
-function viewRequests()
-{
-	const id = document.getElementById ("employeeId").value;
-	
-	const url = "/Project1/api/viewoneemployeerequests?employeeId="+id;
-	
-	let xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function (){
-		if (this.readyState==4 && this.status==200){
-			const reimbursements =JSON.parse(this.responseText);
-			
-			console.log(reimbursements);
-			   
-			    let div = document.getElementById("divContent2");
-			    
-	for(let r of reimbursements){
-		
-				let newReimbursement=document.createElement('div')
-				let requestId=document.createElement('p')
-				let employeeId=document.createElement('p')
-				let managerId=document.createElement('p')
-				let status=document.createElement('p')
-				let amount=document.createElement('p')
-				let date=document.createElement('p')
-				
-				requestId.innerText = r.requestId
-				employeeId.innerText = r.employeeId
-				managerId.innerText = r.managerId
-				status.innerText = r.status
-				amount.innerText = r.amount
-				date.innerText = r.date
-				
-				newReimbursement.append(requestId)
-				newReimbursement.append(employeeId)
-				newReimbursement.append(managerId)
-				newReimbursement.append(status)
-				newReimbursement.append(amount)
-				newReimbursement.append(date)
-		
-				div.append(newReimbursement)
-	       }		
-     	}
-	}
-	xhr.open ("GET", url);
-	
-	xhr.send();
-}
-
-
-
-
-
-
 
 
 var GC_REMIMBURSEMENTS=null;
@@ -130,32 +72,38 @@ function viewPending()
 			GC_REMIMBURSEMENTS=reimbursements;
 			console.log(reimbursements);
 			   
-			    let div = document.getElementById("divContent2");
+			    let tbody = document.getElementById("requestData");
 	let idx=0;
 	for(let r of reimbursements){
-				let newReimbursement=document.createElement('div')
-				let requestId=document.createElement('p')
-				let employeeId=document.createElement('p')
-				let managerId=document.createElement('p')
-				let status=document.createElement('p')
-				let amount=document.createElement('p')
-				let date=document.createElement('p')
-				let fileP=document.createElement('p')
+				let tr=document.createElement('tr')
+				let requestId=document.createElement('td')
+				let employeeId=document.createElement('td')
+				let managerId=document.createElement('td')
+				let status=document.createElement('td')
+				let amount=document.createElement('td')
+				let date=document.createElement('td')
+				let fileP=document.createElement('td')
+
+				let parsedDate = new Date(r.date)
+				r.date.textContext = parsedDate.getFullYear() + "-" + parsedDate.getMonth() + "-" + parsedDate.getDay();
+				
 				requestId.innerText = r.requestId
 				employeeId.innerText = r.employeeId
 				managerId.innerText = r.managerId
 				status.innerText = r.status
 				amount.innerText = r.amount
-				date.innerText = r.date
+				date.innerText = parsedDate
 				fileP.innerHTML = "<a href='javascript:showImage("+idx+")'>"+ r.requestId+"</a>";
-				newReimbursement.append(requestId)
-				newReimbursement.append(employeeId)
-				newReimbursement.append(managerId)
-				newReimbursement.append(status)
-				newReimbursement.append(amount)
-				newReimbursement.append(date)
-				newReimbursement.append(fileP)
-				div.append(newReimbursement)
+				
+				tr.append(requestId)
+				tr.append(employeeId)
+				tr.append(managerId)
+				tr.append(status)
+				tr.append(amount)
+				tr.append(date)
+				tr.append(fileP)
+
+				tbody.append(tr)
 				++idx;
 	       }		
      	}
@@ -185,32 +133,35 @@ function viewAllResolved()
 			
 			console.log(reimbursements);
 			   
-			    let div = document.getElementById("divContent3");
+			    let tbody = document.getElementById("requestData");
 			    
 	for(let r of reimbursements){
-				let newReimbursement=document.createElement('div')
-				let requestId=document.createElement('p')
-				let employeeId=document.createElement('p')
-				let managerId=document.createElement('p')
-				let status=document.createElement('p')
-				let amount=document.createElement('p')
-				let date=document.createElement('p')
+				let tr=document.createElement('tr')
+				let requestId=document.createElement('td')
+				let employeeId=document.createElement('td')
+				let managerId=document.createElement('td')
+				let status=document.createElement('td')
+				let amount=document.createElement('td')
+				let date=document.createElement('td')
+
+				let parsedDate = new Date(r.date)
+				r.date.textContext = parsedDate.getFullYear() + "-" + parsedDate.getMonth() + "-" + parsedDate.getDay();
 				
 				requestId.innerText = r.requestId
 				employeeId.innerText = r.employeeId
 				managerId.innerText = r.managerId
 				status.innerText = r.status
 				amount.innerText = r.amount
-				date.innerText = r.date
+				date.innerText = parsedDate
 				
-				newReimbursement.append(requestId)
-				newReimbursement.append(employeeId)
-				newReimbursement.append(managerId)
-				newReimbursement.append(status)
-				newReimbursement.append(amount)
-				newReimbursement.append(date)
+				tr.append(requestId)
+				tr.append(employeeId)
+				tr.append(managerId)
+				tr.append(status)
+				tr.append(amount)
+				tr.append(date)
 		
-				div.append(newReimbursement)
+				tbody.append(tr)
 	       }		
      	}
 	}

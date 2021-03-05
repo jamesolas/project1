@@ -1,13 +1,10 @@
 @charset "ISO-8859-1";
 
-
-
-
 table{
 	border-style: solid;
 	margin-right: auto;
 	margin-left: auto;
-	width: 75%;
+	width: 100%;
 	border-collapse: collapse;
 	text-align: center;
 }
@@ -20,5 +17,7 @@ table{
 
 td{
 	border-right: thin solid;
-	width: 10em;
+	width: 20em;
 }
+
+body{background-color:cyan;}

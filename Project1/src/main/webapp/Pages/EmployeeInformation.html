@@ -3,19 +3,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee Information</title>
+<link rel="stylesheet" href="../Styles/EmployeeInformation.css"></link>
 </head>
 <body>
+    <button onclick="history.go(-1)">Back</button>
+    <br>
 <div>
 <H1>View Information</H1>
 <form id="form3" method="get" action="/Project1/api/viewinfo">
-<input type="text" name="employeeId" id="employeeId1" placeholder="Employee Id" required />
-<input type='button' onClick='viewInfo()' value='ViewResolved'/>
+<!-- <input type="text" name="employeeId" id="employeeId1" placeholder="Employee Id" required /> -->
+<input type='button' onClick='viewInfo()' value='View Employee Information'/>
 </form>
 </div>
 <div>
 <H1>Change Phone</H1>
 <form id=form4 method="post" action="/Project1/api/changephone">
-<input type="text" name="employeeId" id="employeeId2" placeholder="Employee Id" required />
+<!-- <input type="text" name="employeeId" id="employeeId2" placeholder="Employee Id" required /> -->
 <input type="text" name="phone" id="phone" placeholder="phone" required />
 <button>Submit</button>
 </form>
@@ -23,6 +26,6 @@
 
 <div id="divContent">
 </div>
-<script src="../Scripts/EmployeeInformation.js"?v=4></script>
+<script src="../Scripts/EmployeeInformation.js"></script>
 </body>
 </html>

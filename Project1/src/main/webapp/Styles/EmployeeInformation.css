@@ -1,1 +1,8 @@
 @charset "ISO-8859-1";
+
+[id ="divContent"]{
+    display: block;
+    margin-top: 15px;
+}
+
+body{background-color:cyan;}

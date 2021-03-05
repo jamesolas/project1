@@ -59,7 +59,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		s = HibernateSessionFactory.getSession();
 		t = s.beginTransaction();
 		rList = s.createQuery("FROM Reimbursement WHERE employeeId = :employeeId AND status = 'pending'", Reimbursement.class).setParameter("employeeId", employeeId).getResultList();
-				t.commit();
+		System.out.println("DAO viewPendingRequests "+rList);
+		t.commit();
 		success = 1;
 		}catch(HibernateException e) {
 			e.printStackTrace();

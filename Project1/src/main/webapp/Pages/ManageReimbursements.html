@@ -3,6 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Manage Reimbursements</title>
+<link rel="stylesheet" href="../Styles/ManageReimbursements.css"></link>
 </head>
 <body>
 
@@ -49,10 +50,27 @@
 <br>
 
 
-<div id="divContent"></div>
+<div id="divContent">
+    <table>
+        <thead>
+            <tr>
+                <td>Request ID</td>
+                <td>Employee ID</td>
+                <td>Manager ID</td>
+                <td>Status</td>
+                <td>Amount</td>
+                <td>Date</td>
+                <td>File</td>
+            </tr>
+        </thead>
+            <tbody id="requestData"></tbody>
+    </table>
+</div>
+
+
 <div id="divContent2"></div>
 <div id="divContent3"></div>
 
-<script src="../Scripts/ManageReimbursements.js?v=11"></script>
+<script src="../Scripts/ManageReimbursements.js"></script>
 </body>
 </html>

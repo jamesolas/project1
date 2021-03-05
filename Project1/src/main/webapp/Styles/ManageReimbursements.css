@@ -1,1 +1,22 @@
 @charset "ISO-8859-1";
+
+table{
+    border-style: solid;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+[id = "divContent"]{
+    display: block;
+    margin-top: 15px;
+}
+
+td{
+    border-right: thin solid;
+    width: 20em;
+}
+
+body{background-color:cyan;}

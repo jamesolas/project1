@@ -1,8 +1,10 @@
 function viewInfo ()
 {
-	const id = document.getElementById ("employeeId1").value;
+	// const id = document.getElementById ("employeeId1").value; 
 	
-	const url = "/Project1/api/viewinfo?employeeId1="+id;
+	//const url = "/Project1/api/viewinfo?employeeId1="+id;
+	const url = "/Project1/api/viewinfo?employeeId1=";
+
 	//alert(url);
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function (){
@@ -20,12 +22,12 @@ function viewInfo ()
 				let managerId=document.createElement('p')
 				let type=document.createElement('p')
 				
-				employeeId.innerText = info.employeeId
-				firstName.innerText = info.firstName
-				lastName.innerText = info.lastName
-				phone.innerText = info.phone
-				managerId.innerText = info.manager.managerId
-				type.innerText = info.type
+				employeeId.innerText = "Employee ID: "+info.employeeId
+				firstName.innerText = "First Name: "+info.firstName
+				lastName.innerText = "Last Name: "+info.lastName
+				phone.innerText = "Phone: "+info.phone
+				managerId.innerText = "Manager ID: "+info.manager.managerId
+				type.innerText = "Type: "+info.type
 				
 				employeeInfo.append(employeeId)
 				employeeInfo.append(firstName)

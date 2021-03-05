@@ -51,14 +51,20 @@ public class RequestHelper {
 		switch(RESOURCE) {
 				
 		case "/employeepending":
-			log.info("employeepending endpoint");
-			final String employeeIdString = request.getParameter("employeeId");
-			int employeeId = Integer.parseInt(employeeIdString);
+			
+			//final int employeeId = Integer.parseInt(request.getParameter("employeeId"));
+			int employeeId = (int) request.getSession().getAttribute("employeeId");
+			System.out.println("employeepending employeeId attribute "+employeeId);
+			
+			
+			
 			try {
 				log.info(employeeServiceImpl.viewPendingRequests(employeeId));
 				
-				String email = (String) request.getSession().getAttribute("email");
-				System.out.println(email);
+//				String email = (String) request.getSession().getAttribute("email");
+//				System.out.println(email);
+				
+				System.out.println(employeeServiceImpl.viewPendingRequests(employeeId));
 				
 				return employeeServiceImpl.viewPendingRequests(employeeId);
 				
@@ -69,9 +75,11 @@ public class RequestHelper {
 			}
 		break;
 		case "/employeeresolved":
-			log.info("employeeresolved endpoint");
-			final String employeeId2String = request.getParameter("employeeId");
-			int employeeId2 = Integer.parseInt(employeeId2String);
+			
+			//final String employeeId2String = request.getParameter("employeeId");
+			int employeeId2 = (int) request.getSession().getAttribute("employeeId");
+			
+			//int employeeId2 = Integer.parseInt(employeeId2String);
 			try {
 				return employeeServiceImpl.viewResolvedRequests(employeeId2);
 			} catch (BusinessException e) {
@@ -132,14 +140,15 @@ public class RequestHelper {
 			} catch (BusinessException e) {
 				e.printStackTrace();
 			}
-		break;
-		case "/update":
+
+		
 			
-			break;
+		break;
 		case "/viewinfo":
 			log.info("viewpending endpoint");
-			final int employeeId5 = Integer.parseInt(request.getParameter("employeeId1"));
-			//int employeeId5 = Integer.parseInt(employeeIdString3);
+			//final int employeeId5 = Integer.parseInt(request.getParameter("employeeId1"));
+			HttpSession session3 = request.getSession();
+			int employeeId5 = (int) session3.getAttribute("employeeId");
 			try {
 				
 				return employeeServiceImpl.viewInfo(employeeId5);
@@ -176,35 +185,67 @@ public class RequestHelper {
 	
 			final String email = request.getParameter("email");
 			final String password = request.getParameter("password");
+			HttpSession session = request.getSession();
+			int employeeIdParameter = 0;
+					
+			try {
+				employeeIdParameter = loginServiceImpl.getEmployeeId(email);
+			} catch (BusinessException e3) {
+				e3.printStackTrace();
+			}
+			System.out.println("employeeIdParameter "+ employeeIdParameter);
+			
+			session.setAttribute("employeeId", employeeIdParameter);
+			session.setAttribute("email", email);	
+			int testEmployeeId = (int) session.getAttribute("employeeId");
+			System.out.println("testEmployeeId in login: "+testEmployeeId);
+			//System.out.println("session employeeId: "+ session.getAttribute("employeeId"));
+			
+			int managerId3 = 0;
 			
 			try {
+				int employeeIdparam = (int) session.getAttribute("employeeId");
+				managerId3 = loginServiceImpl.getManagerId(employeeIdparam);
+			} catch (BusinessException e3) {
+				e3.printStackTrace();
+			
+			}
+			session.setAttribute("managerId", managerId3);
+			int testManagerId = (int) session.getAttribute("managerId");
+			System.out.println("login managerId attribute "+testManagerId);
+						
+			try {	
+				
 				if (loginServiceImpl.login(email, password).equals("employee")) {
 					log.info("login = employee");
-					HttpSession session = request.getSession();
-					session.setAttribute("email", email);			
+//					HttpSession session = request.getSession();
+//					session.setAttribute("employeeId", employeeIdParameter);
+//					session.setAttribute("email", email);			
 					response.sendRedirect("/Project1/Pages/EmployeeHome.html");
 				}
 						
 				if(loginServiceImpl.login(email, password).equals("manager")) {
 					log.info("login = manager");
-					HttpSession session = request.getSession();
-					session.setAttribute("email", email);
+//					HttpSession session = request.getSession();
+//					session.setAttribute("employeeId", employeeIdParameter);
+//					session.setAttribute("email", email);
 					response.sendRedirect("/Project1/Pages/ManagerHome.html");
 				}
+				
 			} catch (BusinessException | IOException e) {
 				e.printStackTrace();
 			}
 		break;	
 		case "/employeesubmit":
 			String fileName = upload(request, response);
-			final String employeeId2 = request.getParameter("employeeId");
-			final String managerId2 = request.getParameter("managerId");
-			final String stringAmount = request.getParameter("amount");
+			//String employeeIdParameter = (String) request.getSession().getAttribute("email");
+			
+			//final int employeeId2 = Integer.parseInt(request.getParameter("employeeId"));
+			//final int managerId2 = Integer.parseInt(request.getParameter("managerId"));
+			final int amount = Integer.parseInt(request.getParameter("amount"));
 			final String stringDate = request.getParameter("date");
 			
-			int employeeIdInt = Integer.parseInt(employeeId2);
-			int managerIdInt = Integer.parseInt(managerId2);
-			double amount = Double.parseDouble(stringAmount);
+			//double amount = Double.parseDouble(stringAmount);
 			Date date = null;
 			
 		
@@ -213,13 +254,18 @@ public class RequestHelper {
 			} catch (ParseException e2) {
 				e2.printStackTrace();
 			}
-			log.info("employeesubmit endpoint");
+			
 			try {
-				employeeServiceImpl.submitRequest(employeeIdInt, managerIdInt, amount, date, fileName );//fileBytes
+				HttpSession session2 = request.getSession();
+				int employeeId6 = (int) session2.getAttribute("employeeId");
+				int managerId2 = (int) session2.getAttribute("managerId");
+				//employeeServiceImpl.submitRequest(employeeIdInt, managerId2, amount, date, fileName );//fileBytes
+				employeeServiceImpl.submitRequest(employeeId6, managerId2, amount, date, fileName );//fileBytes
 				
 			} catch (BusinessException e1) {
 				e1.printStackTrace();
 			}
+			response.sendRedirect("/Project1/Pages/Reimbursements.html");
 		break;
 		case "/managerapprove":
 			final int requestId2 = Integer.parseInt(request.getParameter("requestId"));
@@ -229,6 +275,7 @@ public class RequestHelper {
 			} catch (BusinessException e) {
 				e.printStackTrace();
 			}
+			response.sendRedirect("/Project1/Pages/ManageReimbursements.html");
 		break;
 		case "/managerdeny":
 			final int requestId3 = Integer.parseInt(request.getParameter("requestId"));
@@ -237,12 +284,14 @@ public class RequestHelper {
 			} catch (BusinessException e) {
 				e.printStackTrace();
 			}
-			
+			response.sendRedirect("/Project1/Pages/ManageReimbursements.html");
 		break;
 		case "/changephone":
-			final int employeeId3 = Integer.parseInt(request.getParameter("employeeId"));
+			//final int employeeId3 = Integer.parseInt(request.getParameter("employeeId"));
 			final String phone = request.getParameter("phone");
-		
+			HttpSession session3 = request.getSession();
+			int employeeId3 = (int) session3.getAttribute("employeeId");
+			
 			try {
 				employeeServiceImpl.changePhone(employeeId3, phone);
 			} catch (BusinessException e) {
@@ -254,7 +303,7 @@ public class RequestHelper {
 			upload(request, response);
 		break;
 		case "/logout":
-			HttpSession session = request.getSession(false);
+			session = request.getSession(false);
 			response.sendRedirect("/Project1");
 			if(session != null) {
 				session.invalidate();

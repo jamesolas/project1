@@ -17,4 +17,14 @@ public class LoginServiceImpl implements LoginService {
 		return returnedEmail;
 	}
 
+	@Override
+	public int getEmployeeId(String email) throws BusinessException {
+		return this.dao.getEmployeeId(email);
+	}
+
+	@Override
+	public int getManagerId(int employeeId) throws BusinessException {
+		return this.dao.getManagerId(employeeId);
+	}
+
 }

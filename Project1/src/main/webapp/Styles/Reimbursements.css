@@ -4,7 +4,7 @@ table{
 	border-style: solid;
 	margin-right: auto;
 	margin-left: auto;
-	width: 75%;
+	width: 100%;
 	border-collapse: collapse;
 	text-align: center;
 }
@@ -12,10 +12,12 @@ table{
 [id="divContent1"]{
 	display:block;
 	margin-top: 15px;
-	/*width: 20em;*/
+	/*width: 30em;*/
 }
 
 td{
 	border-right: thin solid;
 	width: 10em;
 }
+
+body{background-color:cyan;}
