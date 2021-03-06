@@ -87,7 +87,9 @@ public class RequestHelper {
 			}
 		break;
 		case "/managerviewpending":
-			final int managerId2 = Integer.parseInt(request.getParameter("managerId"));
+			HttpSession session4 = request.getSession();
+			int managerId2 = (int) session4.getAttribute("managerId");
+			//final int managerId2 = Integer.parseInt(request.getParameter("managerId"));
 			
 			try {
 				return managerServiceImpl.viewManagerPendingRequests(managerId2);
@@ -297,6 +299,7 @@ public class RequestHelper {
 			} catch (BusinessException e) {
 				e.printStackTrace();
 			}
+			response.sendRedirect("/Project1/Pages/EmployeeInformation.html");
 			break;
 		case "/upload":
 			

@@ -15,6 +15,6 @@ public interface ManagerDAO {
 	public List<Reimbursement> viewReceipts (int requestId) throws BusinessException; //may not need this one
 	public List<Reimbursement> viewResolvedRequests () throws BusinessException;
 	public List<Employee> viewEmployees () throws BusinessException;
-	public List<Reimbursement> viewAllReceipts () throws BusinessException;
+	public List<Reimbursement> viewAllReceipts () throws BusinessException; //may not need this one
 
 }

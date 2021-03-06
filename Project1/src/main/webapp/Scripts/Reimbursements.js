@@ -45,9 +45,7 @@ function viewPending ()
 				tr.append(date)
 		
 				tbody.append(tr)
-	}
-		
-			
+			}	
 		}
 	}
 	xhr.open ("GET", url);

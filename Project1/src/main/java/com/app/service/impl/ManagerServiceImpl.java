@@ -13,7 +13,6 @@ public class ManagerServiceImpl implements ManagerService {
 	
 	@Override
 	public List<Reimbursement> viewManagerPendingRequests(int managerId) throws BusinessException {
-		
 		return this.managerDAOImpl.viewManagerPendingRequests(managerId);
 	}
 

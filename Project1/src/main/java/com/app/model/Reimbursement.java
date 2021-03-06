@@ -39,6 +39,7 @@ public class Reimbursement {
 	
 	@Column
 	private Date date;
+	
 	@Column 
 	private byte[] receipt;
 	

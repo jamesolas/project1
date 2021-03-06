@@ -25,7 +25,7 @@ public class DispatcherServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 	System.out.println ("doGet");
 		ObjectMapper objectMapper = new ObjectMapper();
-		response.setContentType("application/json");
+		response.setContentType("application/json"); //not necessary
 		PrintWriter writer = response.getWriter();
 		final String JSON = objectMapper.writeValueAsString(RequestHelper.processGet(request, response));
 		writer.write(JSON);

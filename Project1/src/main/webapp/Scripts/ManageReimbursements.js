@@ -61,9 +61,11 @@ function showImage (idx)
 
 function viewPending()
 {
-	const id = document.getElementById ("managerId").value;
+	// const id = document.getElementById ("managerId").value;
 	//alert("viewPending");
-	const url = "/Project1/api/viewoneemployeerequests?employeeId="+id;
+	// const url = "/Project1/api/viewoneemployeerequests?employeeId="+id;
+	
+	const url = "/Project1/api/managerviewpending";
 	
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function (){
