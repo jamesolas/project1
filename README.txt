@@ -20,6 +20,8 @@ Type "git init" to initialize the local repository.
 Type "git remote add origin https://github.com/jamesolas/project1.git" to clone the online repository.
 Type "git pull" to pull the data into the local repository.
 Download an Apache Tomcat server from Apache's website.
+
+Usage
 Open the project in a program called Spring Tool Suite or Eclipse.
 Right-click on the project on the left side and go to Maven -> Update Project.
 Click the "run" button at the top and a select "Run on Server"
