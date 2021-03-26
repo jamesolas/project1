@@ -14,7 +14,18 @@ Roles / Responsibilities
     Used AJAX to display pending reimbursements from the database.
     Used PostgreSQL for the database.
 
-	To use the web application, the user needs to go to a certain address(for example: http://localhost:8080/Project1). The server is currently off for displaying the application due to external interference.
+Getting Started
+Open a command line interface.
+Type "git init" to initialize the local repository.
+Type "git remote add origin https://github.com/jamesolas/project1.git" to clone the online repository.
+Type "git pull" to pull the data into the local repository.
+Download an Apache Tomcat server from Apache's website.
+Open the project in a program called Spring Tool Suite or Eclipse.
+Right-click on the project on the left side and go to Maven -> Update Project.
+Click the "run" button at the top and a select "Run on Server"
+You will need to choose a Tomcat server by locating the installation folder.
+Click finish.
+To use the web application, the user needs to go to their local host address (for example: http://localhost:8080/Project1).
 
 Environment / Technologies
 Servlets, Java, JavaScript, HTML, CSS, JDBC, SQL, AJAX, Bootstrap, RDS, Tomcat, Git, Maven
